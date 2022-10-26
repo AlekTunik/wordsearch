@@ -7,11 +7,32 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <string>
+#include <vector> 
+
+using namespace std;
 
 class dictionary
+// Read words from dictionary file and store in vector
 {
     public:
+    void readDict();
+    void sortWords();
+    void lookupWords();
 
-    private: 
-    
+    private:
+    vector<string> words;
+
 };
+
+void readDict()
+// Read words from dictionary file
+{
+
+}
+
+void sortWords()
+// Sort words using selection sort
+{
+
+}
