@@ -53,13 +53,24 @@ ostream& operator<<(ostream& ostr, const words& words)
     return ostr;
 }
 
-void dictionary::sortWords()
+void dictionary::sortWords() // Looked at her example in the slides for this
 // Sort words using selection sort
 {
+    for (i = 0; i < words.size()-2; i++)
+    {
+        int min = i;
+        for (j = i+1; j < words.size()-1; j++)
+        {
+            if (words[j] < words[min])
+            {
+                min = j;
+            }
+            swap(words[i], words[min]);
+        }
+    } 
+} // End sortWords
 
-}
-
-bool dictionary::lookupWords(string target) // Basically just looked at her example in the slides for this
+bool dictionary::lookupWords(string target) // Looked at her example in the slides for this
 // Lookup words using binary search
 // If found, return true and print word
 // Return false otherwise
