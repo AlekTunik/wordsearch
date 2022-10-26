@@ -19,12 +19,12 @@ class dictionary
     void readDict();
     friend ostream& operator<<(ostream& ostr, const words& words); // I think?
     void sortWords();
-    void lookupWords();
+    bool lookupWords(string target);
 
     private:
     vector<string> words;
 
-};
+}; // End dictionary class
 
 void dictionary::readDict()
 // Read words from dictionary file
@@ -39,7 +39,7 @@ void dictionary::readDict()
         words.push_back(temp); // Add to end of vector
     }
 
-}
+} // End readDict
 
 ostream& operator<<(ostream& ostr, const words& words)
 // Print word list
@@ -59,8 +59,30 @@ void dictionary::sortWords()
 
 }
 
-void dictionary::lookupWords()
+bool dictionary::lookupWords(string target) // Basically just looked at her example in the slides for this
 // Lookup words using binary search
+// If found, return true and print word
+// Return false otherwise
 {
+    int first = 0;
+    int last = words.size()-1;
 
-}
+    while first <= last
+    {
+        int mid = (first+last)/2;
+        string midVal = words[mid];
+
+        if (target == midVal)
+        // Check if target word is found
+        {
+            cout << "Houston, we've got eyes on the target: " << midVal << endl;
+        }
+        return true;
+        else if (target < midVal)
+        {
+            first = mid - 1;
+            last = mid + 1;
+        }
+    return false;
+    } // End while
+} // End lookupWords
