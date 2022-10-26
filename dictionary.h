@@ -26,9 +26,18 @@ class dictionary
 
 };
 
-void readDict()
+void dictionary::readDict()
 // Read words from dictionary file
 {
+    // Read file and add words line by line to 'words' vector
+    ifstream infile;
+    infile.open(" .txt"); // Put path of file in quotes
+    while (getline (infile, temp) 
+    {
+        string temp; 
+        getline (infile, temp); 
+        words.push_back(temp); // Add to end of vector
+    }
 
 }
 
@@ -38,8 +47,14 @@ ostream& operator<<(ostream& ostr, const words& words)
 
 }
 
-void sortWords()
+void dictionary::sortWords()
 // Sort words using selection sort
+{
+
+}
+
+void dictionary::lookupWords()
+// Lookup words using binary search
 {
 
 }
