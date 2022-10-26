@@ -11,11 +11,12 @@
 using namespace std;
 
 class grid
+// Read letters from a grid file and store in matrix
 {
     public:
-    
 
-    private: 
+    private:
+    matrix<char> grid;
     
 };
 

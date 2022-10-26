@@ -17,6 +17,7 @@ class dictionary
 {
     public:
     void readDict();
+    friend ostream& operator<<(ostream& ostr, const words& words); // I think?
     void sortWords();
     void lookupWords();
 
@@ -27,6 +28,12 @@ class dictionary
 
 void readDict()
 // Read words from dictionary file
+{
+
+}
+
+ostream& operator<<(ostream& ostr, const words& words)
+// Print word list
 {
 
 }
