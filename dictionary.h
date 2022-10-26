@@ -9,11 +9,16 @@
 #include <stdlib.h>
 #include <string>
 #include <vector> 
+#include "d_except.h"
+#include "d_matrix.h"
 
 using namespace std;
 
 class dictionary
 // Read words from dictionary file and store in vector
+// Print list of words from dictionary
+// Sort words in alphabetical order
+// Look up word in the dictionary to see if it exists
 {
     public:
     void readDict();
@@ -31,7 +36,7 @@ void dictionary::readDict()
 {
     // Read file and add words line by line to 'words' vector
     ifstream infile;
-    infile.open(" .txt"); // Put path of file in quotes
+    infile.open(" "); // Put path of file in quotes
     while (getline (infile, temp) 
     {
         string temp; 
