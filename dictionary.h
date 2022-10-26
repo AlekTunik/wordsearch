@@ -44,8 +44,13 @@ void dictionary::readDict()
 ostream& operator<<(ostream& ostr, const words& words)
 // Print word list
 {
-    // For loop to get each word in 'words'
-    // ostr << each word
+    int count = 0;
+    for (int i = 0; i < words.size(); i++ )
+    {
+        ostr << words[i] << endl;
+        count++;
+    }
+    return ostr;
 }
 
 void dictionary::sortWords()
