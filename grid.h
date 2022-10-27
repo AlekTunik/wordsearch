@@ -30,6 +30,8 @@ void grid::readGrid()
 {
     ifstream infile;
     infile.open(" "); // Put path of file in quotes
+    // Need to add chars to matrix here utilizing matrix class
+    // Probably use embedded for loops to get each char
 
 }
 

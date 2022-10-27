@@ -41,9 +41,8 @@ void dictionary::readDict()
     {
         string temp; 
         getline (infile, temp); 
-        words.push_back(temp); // Add to end of vector
+        words.push_back(temp); 
     }
-
 } // End readDict
 
 ostream& operator<<(ostream& ostr, const words& words)
@@ -72,7 +71,7 @@ void dictionary::sortWords() // Looked at her example in the slides for this
             }
             swap(words[i], words[min]);
         }
-    } 
+    } //End for
 } // End sortWords
 
 bool dictionary::lookupWords(string target) // Looked at her example in the slides for this
@@ -82,7 +81,6 @@ bool dictionary::lookupWords(string target) // Looked at her example in the slid
 {
     int first = 0;
     int last = words.size()-1;
-
     while first <= last
     {
         int mid = (first+last)/2;
