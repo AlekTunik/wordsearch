@@ -12,3 +12,18 @@
 
 using namespace std;
 
+int main() 
+{
+
+}
+
+vector<string> findMatches(dictionary words, grid matrix) 
+{
+
+}
+
+void search() 
+// Will call 'findMatches' to print results
+{
+
+}

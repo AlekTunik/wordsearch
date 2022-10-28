@@ -16,22 +16,35 @@ class grid
 // Read letters from a grid file and store in matrix
 {
     public:
-    void readGrid();
+    void createMatrix();
 
     private:
-    matrix<char> grid;
+    matrix<char> newMatrix;
     int rows;
     int cols;
     
 };
 
-void grid::readGrid()
+void grid::createMatrix()
 // Read letters from grid file and store in matrix
 {
     ifstream infile;
     infile.open(" "); // Put path of file in quotes
-    // Need to add chars to matrix here utilizing matrix class
-    // Probably use embedded for loops to get each char
+    infile >> rows; // Grabs the 1st integer of the txt file (number of rows)
+    infile >> cols; // Grabs the 2nd integer of the txt file (number of cols)
+
+    // References matrix class
+    // Creates a matrix sized to the grid dimensions
+    newMatrix.resize(rows,cols); 
+
+    //Populate matrix with grid elements
+    for (int i = 0; i < rows; i++) 
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            matrix = matrix
+        }
+    }
 
 }
 
