@@ -39,7 +39,12 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 // reinitialize word for every iteration
                 word = "";
 
-                //
+                //iterate thru string length
+                //I used get rows bc the longest it can be is the # of rows?? could be wrong
+                for (int l = 0; l < myGrid.getRows(); l++)
+                {
+                    
+                }
             }
 
         }
@@ -76,6 +81,8 @@ int search()
 
 int main()
 {
+    //call search
+    search();
 
 } // end main
 
