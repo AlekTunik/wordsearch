@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 #include "d_except.h"
 #include "d_matrix.h"
 
@@ -29,8 +30,17 @@ void grid::readGrid()
 // Read letters from grid file and store in matrix
 {
     ifstream infile;
-    infile.open(" "); // Put path of file in quotes
+    infile.open("15x15s.txt"); // Put name of file in quotes
+
+    //create object
+
+    //size of grid
+    cols();
+    rows();
+
     // Need to add chars to matrix here utilizing matrix class
+
+
     // Probably use embedded for loops to get each char
 
 }
