@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 #include "d_except.h"
 #include "d_matrix.h"
 
@@ -16,36 +17,54 @@ class grid
 // Read letters from a grid file and store in matrix
 {
     public:
-    void createMatrix();
+
+    int getRows();
+    int getCols();
+    char readGrid(string grid_file);
 
     private:
-    matrix<char> newMatrix;
-    int rows;
-    int cols;
+    matrix<char> grid;
+    int _rows;
+    int _cols;
     
 };
 
-void grid::createMatrix()
+int grid::getRows()
+// Get number of rows
+{
+    return _rows;
+}
+
+int grid::getCols()
+// Get number of columns
+{
+    return _cols;
+}
+
+
+char grid::readGrid(string grid_file)
 // Read letters from grid file and store in matrix
 {
-    ifstream infile;
-    infile.open(" "); // Put path of file in quotes
-    infile >> rows; // Grabs the 1st integer of the txt file (number of rows)
-    infile >> cols; // Grabs the 2nd integer of the txt file (number of cols)
+    // open file
+	ifstream myGrid(grid_file);
 
-    // References matrix class
-    // Creates a matrix sized to the grid dimensions
-    newMatrix.resize(rows,cols); 
+    // Read in number of rows and columns
+	myGrid >> _rows >> _cols;
+>>>>>>> c8471cfd9ab59a5730f9cede25e4cefce2f3a59d
 
-    //Populate matrix with grid elements
-    for (int i = 0; i < rows; i++) 
+    //resize the matrix 
+    grid.resize(_rows, _cols);
+
+	for (int i = 0; i < _rows; i++)
     {
-        for (int j = 0; j < cols; j++)
+        for (int j = 0; j < _cols; j++)
         {
-            matrix = matrix
+            myGrid >> grid[i][j];
         }
     }
-
+    
+    // Close the file   
+	myGrid.close();
 }
 
 
