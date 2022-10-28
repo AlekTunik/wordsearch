@@ -48,13 +48,14 @@ char grid::readGrid(string grid_file)
     // open file
 	ifstream myGrid(grid_file);
 
+    // Grabs the first 2 integers of the txt file
     // Read in number of rows and columns
 	myGrid >> _rows >> _cols;
->>>>>>> c8471cfd9ab59a5730f9cede25e4cefce2f3a59d
 
-    //resize the matrix 
+    //resize the matrix to grid dimensions
     grid.resize(_rows, _cols);
 
+    // Populate matrix with grid elements
 	for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
