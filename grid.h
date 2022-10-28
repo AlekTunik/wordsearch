@@ -45,19 +45,25 @@ int grid::getCols()
 char grid::readGrid(string grid_file)
 // Read letters from grid file and store in matrix
 {
+    // open file
+	ifstream myGrid(grid_file);
+
+    // Read in number of rows and columns
+	myGrid >> _rows >> _cols;
+
+    //resize the matrix 
+    grid.resize(_rows, _cols);
+
+	for (int i = 0; i < _rows; i++)
+    {
+        for (int j = 0; j < _cols; j++)
+        {
+            myGrid >> grid[i][j];
+        }
+    }
     
-	ifstream puzzle(grid_file);
-	puzzle >> _cols >> _rows;
-	for (int row = 0; row < _rows; row++)
-	{
-		vector<char> newRow(_cols);
-		grid.push_back(newRow);
-		for (int col = 0; col < _cols; col++)
-		{
-			puzzle >> grid[row][col];
-		}
-	}
-	puzzle.close();
+    // Close the file   
+	myGrid.close();
 }
 
 
