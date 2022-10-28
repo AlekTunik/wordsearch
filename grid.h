@@ -17,32 +17,47 @@ class grid
 // Read letters from a grid file and store in matrix
 {
     public:
-    void readGrid();
+    int getRows();
+    int getCols();
+    char getChar(int rows, int cols, int direction, int size);
+    char readGrid(string grid_name);
 
     private:
     matrix<char> grid;
-    int rows;
-    int cols;
+    int _rows;
+    int _cols;
     
 };
 
-void grid::readGrid()
+int grid::getRows()
+// Get number of rows
+{
+    return _rows;
+}
+
+int grid::getCols()
+// Get number of columns
+{
+    return _cols;
+}
+
+
+char grid::readGrid(string grid_file)
 // Read letters from grid file and store in matrix
 {
-    ifstream infile;
-    infile.open("15x15s.txt"); // Put name of file in quotes
-
-    //create object
-
-    //size of grid
-    cols();
-    rows();
-
-    // Need to add chars to matrix here utilizing matrix class
-
-
-    // Probably use embedded for loops to get each char
-
+    
+	ifstream puzzle(grid_file);
+	puzzle >> cols >> rows;
+	for (int row = 0; row < rows; row++)
+	{
+		vector<char> newRow(cols);
+		matrix.push_back(newRow);
+		for (int col = 0; col < cols; col++)
+		{
+			puzzle >> matrix[row][col];
+		}
+	}
+	puzzle.close();
 }
 
 
