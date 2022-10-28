@@ -39,7 +39,7 @@ void dictionary::readDict()
     string temp;
     ifstream infile;
     infile.open(" "); // Put path of file in quotes
-    while (getline (infile, temp) 
+    while (getline (infile, temp))
     {
         getline (infile, temp); 
         words.push_back(temp); 
@@ -61,10 +61,10 @@ ostream& operator<<(ostream& ostr, const words& words)
 void dictionary::sortWords() // Looked at her example in the slides for this
 // Sort words using selection sort
 {
-    for (i = 0; i < words.size()-2; i++)
+    for (int i = 0; i < words.size()-2; i++)
     {
         int min = i;
-        for (j = i+1; j < words.size()-1; j++)
+        for (int j = i+1; j < words.size()-1; j++)
         {
             if (words[j] < words[min])
             {
