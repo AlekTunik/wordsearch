@@ -71,6 +71,7 @@ int search()
     words.readDict();
 
     // (3)
+    // CALL FINDMATCHES HERE
 
 } // end search
 
