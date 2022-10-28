@@ -17,7 +17,6 @@ class grid
 // Read letters from a grid file and store in matrix
 {
     public:
-
     int getRows();
     int getCols();
     char readGrid(string grid_file);

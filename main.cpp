@@ -51,15 +51,31 @@ vector<string> findMatches(dictionary dict, grid myGrid)
 } // end findMatches
 
 int search()
-// Function to read the name of the grid file from the keyboard, read the data 
-//from input files for grid and dictionary, and print out candidate words that 
-//can be found in the dictionary.
+// (1) Read the name of the grid file from the keyboard
+// (2) Read the data from input files for grid and dictionary
+// (3) Print out candidate words that can be found in the dictionary.
 {
+    // (1)
+    string fileName;
+    cout << "Please enter the name of the file to serve as the grid: ";
+    cin >> fileName;
+
+    // (2)
+    // Create grid object
+    // Convert specified file to matrix
+    grid grid;                                        //Do the classes need constructors to do this?
+    grid.readGrid(fileName);
+
+    // Create words object and read in dictionary
+    dictionary words;                                 //Do the classes need constructors to do this?
+    words.readDict();
+
+    // (3)
 
 } // end search
 
 int main()
 {
-    //
+
 } // end main
 
