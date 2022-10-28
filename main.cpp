@@ -67,7 +67,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
 
         }
     }
-    
+
     // return vector of words
     return found;
 } // end findMatches
@@ -92,7 +92,8 @@ int search()
     dictionary words;                                 //Do the classes need constructors to do this?
     words.readDict();
 
-    // (3)
+    // (3) call find matches
+    
 
 } // end search
 
