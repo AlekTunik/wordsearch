@@ -82,7 +82,13 @@ int search()
 int main()
 {
     //call search
-    search();
+    //search();
+
+    dictionary newdict;
+    newdict.readDict();
+    newdict.sortWords();
+    cout << newdict;
+    newdict.lookupWords("wine\r");
 
 } // end main
 

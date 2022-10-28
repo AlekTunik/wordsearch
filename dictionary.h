@@ -23,12 +23,12 @@ class dictionary
 {
     public:
     void readDict();
-    friend ostream& operator<<(ostream& ostr, const words& words); // I think?
+    friend ostream& operator<<(ostream& ostr, const dictionary dict); // I think?
     void sortWords();
     bool lookupWords(string target);
 
     private:
-    vector<string> words;
+    vector<string> _words;
 
 }; // End dictionary class
 
@@ -38,40 +38,44 @@ void dictionary::readDict()
     // Read file and add words line by line to 'words' vector
     string temp;
     ifstream infile;
-    infile.open(" "); // Put path of file in quotes
+    infile.open("Dictionary"); // Put path of file in quotes
+    if(!infile)
+    {
+        cerr << "Couldn't open file, check path" << endl;
+    }
     while (getline (infile, temp))
     {
-        getline (infile, temp); 
-        words.push_back(temp); 
+        getline (infile, temp);
+        _words.push_back(temp);
     }
 } // End readDict
 
-ostream& operator<<(ostream& ostr, const words& words)
-// Print word list
+ostream& operator<<(ostream& ostr, const dictionary dict)
+// Overloaded cout operator to print word list
 {
     int count = 0;
-    for (int i = 0; i < words.size(); i++ )
+    for (int i = 0; i < dict._words.size(); i++ )
     {
-        ostr << words[i] << endl;
+        ostr << dict._words[i] << endl;
         count++;
     }
     return ostr;
-}
+} // End overloaded cout operator
 
 void dictionary::sortWords() // Looked at her example in the slides for this
 // Sort words using selection sort
 {
-    for (int i = 0; i < words.size()-2; i++)
+    for (int i = 0; i < _words.size()-1; i++)
     {
         int min = i;
-        for (int j = i+1; j < words.size()-1; j++)
+        for (int j = i+1; j < _words.size(); j++)
         {
-            if (words[j] < words[min])
+            if (_words[j] < _words[min])
             {
                 min = j;
             }
-            swap(words[i], words[min]);
         }
+        swap(_words[i], _words[min]);
     } //End for
 } // End sortWords
 
@@ -81,23 +85,26 @@ bool dictionary::lookupWords(string target) // Looked at her example in the slid
 // Return false otherwise
 {
     int first = 0;
-    int last = words.size()-1;
+    int last = _words.size()-1;
     while (first <= last)
     {
-        int mid = (first+last)/2;
-        string midVal = words[mid];
+        int mid = first + (last-first)/2;
+        string midVal = _words[mid];
 
-        if (target == midVal)
+        if (target == _words[mid])
         // Check if target word is found
         {
-            cout << "Houston, we've got eyes on the target: " << midVal << endl;
+            cout << "Houston, we've got eyes on the target: " << _words[mid] << endl;
+            return true;
         }
-        return true;
-        else if (target < midVal)
+        else if (target > _words[mid])
+        {
+            first = mid + 1;
+        }
+        else
         {
             first = mid - 1;
-            last = mid + 1;
         }
-    return false;
     } // End while
+    return false;
 } // End lookupWords
