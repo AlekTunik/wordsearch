@@ -47,14 +47,14 @@ char grid::readGrid(string grid_file)
 {
     
 	ifstream puzzle(grid_file);
-	puzzle >> cols >> rows;
-	for (int row = 0; row < rows; row++)
+	puzzle >> _cols >> _rows;
+	for (int row = 0; row < _rows; row++)
 	{
-		vector<char> newRow(cols);
-		matrix.push_back(newRow);
-		for (int col = 0; col < cols; col++)
+		vector<char> newRow(_cols);
+		grid.push_back(newRow);
+		for (int col = 0; col < _cols; col++)
 		{
-			puzzle >> matrix[row][col];
+			puzzle >> grid[row][col];
 		}
 	}
 	puzzle.close();
