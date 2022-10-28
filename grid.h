@@ -19,7 +19,6 @@ class grid
     public:
     int getRows();
     int getCols();
-    char getChar(int rows, int cols, int direction, int size);
     char readGrid(string grid_file);
 
     private:
