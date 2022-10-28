@@ -26,8 +26,6 @@ vector<string> findMatches(dictionary dict, grid myGrid)
     string word;
     vector <string> found;
 
-    bool wordFound = false;
-
     //scan grid to find all possible words
     for (int i = 0; i < myGrid.getRows(); i ++)
     // iterate thru rows
@@ -45,22 +43,6 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 //I used get rows bc the longest it can be is the # of rows?? could be wrong
                 for (int l = 0; l < myGrid.getRows(); l++)
                 {
-                    // start creating the word
-
-
-                    //search the list for the word
-                    target = 
-                    
-                    //check found using binary search
-                    wordFound = dict.lookupWords(target);
-                    
-                    //if found, print to screen & add to vector container
-                    if (wordFound == true && word.size() > 4)
-                    {
-                        cout << word << endl;
-                        found.push_back(word);
-                    }
-
                     
                 }
             }
@@ -68,7 +50,8 @@ vector<string> findMatches(dictionary dict, grid myGrid)
         }
     }
 
-    // return vector of words
+    //print out candidate words
+
     return found;
 } // end findMatches
 
@@ -93,7 +76,6 @@ int search()
     words.readDict();
 
     // (3)
-    // CALL FINDMATCHES HERE
 
 } // end search
 
@@ -106,7 +88,7 @@ int main()
     newdict.readDict();
     newdict.sortWords();
     cout << newdict;
-    newdict.lookupWords("wine\r");
+    newdict.lookupWords("wine");
 
 } // end main
 

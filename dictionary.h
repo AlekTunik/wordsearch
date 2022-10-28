@@ -41,7 +41,7 @@ void dictionary::readDict()
     infile.open("Dictionary"); // Put path of file in quotes
     if(!infile)
     {
-        cerr << "Couldn't open file, check path" << endl;
+        cerr << "Couldn't open Dictionary file, check path" << endl;
     }
     while (getline (infile, temp))
     {
@@ -85,7 +85,8 @@ bool dictionary::lookupWords(string target) // Looked at her example in the slid
 // Return false otherwise
 {
     int first = 0;
-    int last = _words.size()-1;
+    int last = _words.size();
+    target = target + "\r";
     while (first <= last)
     {
         int mid = first + (last-first)/2;
@@ -97,13 +98,13 @@ bool dictionary::lookupWords(string target) // Looked at her example in the slid
             cout << "Houston, we've got eyes on the target: " << _words[mid] << endl;
             return true;
         }
-        else if (target > _words[mid])
+        if (target > _words[mid])
         {
             first = mid + 1;
         }
         else
         {
-            first = mid - 1;
+            last = mid - 1;
         }
     } // End while
     return false;

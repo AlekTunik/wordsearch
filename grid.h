@@ -45,11 +45,16 @@ char grid::readGrid(string grid_file)
 // Read letters from grid file and store in matrix
 {
     // open file
-	ifstream myGrid(grid_file);
+	ifstream infile;
+    infile.open(grid_file);
+    if(!infile)
+    {
+        cerr << "Couldn't open file, check path" << endl;
+    }
 
     // Grabs the first 2 integers of the txt file
     // Read in number of rows and columns
-	myGrid >> _rows >> _cols;
+	infile >> _rows >> _cols;
 
     //resize the matrix to grid dimensions
     grid.resize(_rows, _cols);
@@ -59,12 +64,12 @@ char grid::readGrid(string grid_file)
     {
         for (int j = 0; j < _cols; j++)
         {
-            myGrid >> grid[i][j];
+            infile >> grid[i][j];
         }
     }
     
     // Close the file   
-	myGrid.close();
+	infile.close();
 }
 
 
