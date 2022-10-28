@@ -16,7 +16,7 @@
 
 using namespace std;
 
-int findMatches(dictionary dict, grid myGrid)
+vector<string> findMatches(dictionary dict, grid myGrid)
 // Function to print out candidate words that can be found in the dictionary.
 {
     // Initialize variables
@@ -30,13 +30,21 @@ int findMatches(dictionary dict, grid myGrid)
         for (int j = 0; j < myGrid.getCols(); j ++)
         // iterate thru cols
         {
+            for (int d = 0; d < 8; d ++)
+            //iterate thru each of the 8 directions
+            {
+                // reinitialize word for every iteration
+                word = "";
+
+                //
+            }
 
         }
     }
 
     //print out candidate words
 
-
+    return found;
 } // end findMatches
 
 int search()
