@@ -12,3 +12,21 @@
 
 using namespace std;
 
+int findMatches()
+// Function to print out candidate words that can be found in the dictionary.
+{
+
+} // end findMatches
+
+int search()
+// Function to read the name of the grid file from the keyboard, read the data 
+//from input files for grid and dictionary, and print out candidate words that 
+//can be found in the dictionary.
+{
+
+} // end search
+
+int main()
+{
+    //
+} // end main

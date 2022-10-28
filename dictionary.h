@@ -81,7 +81,7 @@ bool dictionary::lookupWords(string target) // Looked at her example in the slid
 {
     int first = 0;
     int last = words.size()-1;
-    while first <= last
+    while (first <= last)
     {
         int mid = (first+last)/2;
         string midVal = words[mid];
