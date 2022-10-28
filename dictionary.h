@@ -35,11 +35,11 @@ void dictionary::readDict()
 // Read words from dictionary file
 {
     // Read file and add words line by line to 'words' vector
+    string temp;
     ifstream infile;
     infile.open(" "); // Put path of file in quotes
     while (getline (infile, temp) 
     {
-        string temp; 
         getline (infile, temp); 
         words.push_back(temp); 
     }
