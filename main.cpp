@@ -104,7 +104,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
             word = "";
             rowI = j;
             colI = i;
-            while(colI >= myGrid.getCols() && rowI >= myGrid.getRows())
+            while(colI < myGrid.getCols() && rowI < myGrid.getRows())
             {
                 word += grid[colI][rowI];
 
@@ -132,7 +132,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
             word = "";
             rowI = j;
             colI = i;
-            while(colI >= 0 && rowI >= 0)
+            while(colI >= 0 && rowI < myGrid.getRows())
             {
                 word += grid[colI][rowI];
 
