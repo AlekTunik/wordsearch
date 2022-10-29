@@ -60,15 +60,17 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (dict.lookupWords(word))
-                {
-                    found.push_back(word);
+                if (word.length() >= 4){
+                    if (dict.lookupWords(word))
+                    {
+                        found.push_back(word);
+                    }
+                    else if (dict.lookupWords(revWord))
+                    {
+                        found.push_back(revWord);
+                    }
                 }
-                else if (dict.lookupWords(revWord))
-                {
-                    found.push_back(revWord);
-                }
-                
+
                 rowI++; // increment index
             } // end search vertically
             
@@ -84,13 +86,15 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (dict.lookupWords(word))
-                {
-                    found.push_back(word);
-                }
-                else if (dict.lookupWords(revWord))
-                {
-                    found.push_back(revWord);
+                if (word.length() >= 4){
+                    if (dict.lookupWords(word))
+                    {
+                        found.push_back(word);
+                    }
+                    else if (dict.lookupWords(revWord))
+                    {
+                        found.push_back(revWord);
+                    }
                 }
 
                 colI++; // increment column
@@ -108,13 +112,15 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (dict.lookupWords(word))
-                {
-                    found.push_back(word);
-                }
-                else if (dict.lookupWords(revWord))
-                {
-                    found.push_back(revWord);
+                if (word.length() >= 4){
+                    if (dict.lookupWords(word))
+                    {
+                        found.push_back(word);
+                    }
+                    else if (dict.lookupWords(revWord))
+                    {
+                        found.push_back(revWord);
+                    }
                 }
 
                 // increment index
@@ -134,14 +140,17 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (dict.lookupWords(word))
-                {
-                    found.push_back(word);
+                if (word.length() >= 4){
+                    if (dict.lookupWords(word))
+                    {
+                        found.push_back(word);
+                    }
+                    else if (dict.lookupWords(revWord))
+                    {
+                        found.push_back(revWord);
+                    }
                 }
-                else if (dict.lookupWords(revWord))
-                {
-                    found.push_back(revWord);
-                }
+                
                 // decrement index
                 rowI--;
                 colI--;
@@ -182,6 +191,9 @@ void search()
 
 int main()
 {
+    // dictionary words;                                
+    // words.readDict();
     search();
+    cout << ("do\r" == "");
 } // end main
 

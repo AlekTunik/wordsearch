@@ -45,7 +45,6 @@ void dictionary::readDict()
     }
     while (getline (infile, temp))
     {
-        getline (infile, temp);
         _words.push_back(temp);
     }
 } // End readDict
