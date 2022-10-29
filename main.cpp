@@ -150,9 +150,9 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                         found.push_back(revWord);
                     }
                 }
-                
+
                 // decrement index
-                rowI--;
+                rowI++;
                 colI--;
 
             } // end search vertical (pos x)
