@@ -19,10 +19,11 @@ class grid
     public:
     int getRows();
     int getCols();
+    matrix<char> getGrid();
     char readGrid(string grid_file);
 
     private:
-    matrix<char> grid;
+    matrix<char> _grid;
     int _rows;
     int _cols;
     
@@ -40,6 +41,11 @@ int grid::getCols()
     return _cols;
 }
 
+matrix<char> grid::getGrid()
+// Return matrix
+{
+    return _grid;
+}
 
 char grid::readGrid(string grid_file)
 // Read letters from grid file and store in matrix
@@ -57,14 +63,14 @@ char grid::readGrid(string grid_file)
 	infile >> _rows >> _cols;
 
     //resize the matrix to grid dimensions
-    grid.resize(_rows, _cols);
+    _grid.resize(_rows, _cols);
 
     // Populate matrix with grid elements
 	for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
         {
-            infile >> grid[i][j];
+            infile >> _grid[i][j];
         }
     }
     

@@ -23,7 +23,7 @@ class dictionary
 {
     public:
     void readDict();
-    friend ostream& operator<<(ostream& ostr, const dictionary dict); // I think?
+    friend ostream& operator<<(ostream& ostr, const vector<string> words);
     void sortWords();
     bool lookupWords(string target);
 
@@ -50,19 +50,19 @@ void dictionary::readDict()
     }
 } // End readDict
 
-ostream& operator<<(ostream& ostr, const dictionary dict)
+ostream& operator<<(ostream& ostr, const vector<string> words)
 // Overloaded cout operator to print word list
 {
     int count = 0;
-    for (int i = 0; i < dict._words.size(); i++ )
+    for (int i = 0; i < words.size(); i++ )
     {
-        ostr << dict._words[i] << endl;
+        ostr << words[i] << endl;
         count++;
     }
     return ostr;
 } // End overloaded cout operator
 
-void dictionary::sortWords() // Looked at her example in the slides for this
+void dictionary::sortWords()
 // Sort words using selection sort
 {
     for (int i = 0; i < _words.size()-1; i++)
@@ -79,32 +79,35 @@ void dictionary::sortWords() // Looked at her example in the slides for this
     } //End for
 } // End sortWords
 
-bool dictionary::lookupWords(string target) // Looked at her example in the slides for this
+bool dictionary::lookupWords(string word)
 // Lookup words using binary search
 // If found, return true and print word
 // Return false otherwise
 {
     int first = 0;
     int last = _words.size();
-    target = target + "\r";
+    string target = word + "\r";
+
     while (first <= last)
     {
         int mid = first + (last-first)/2;
         string midVal = _words[mid];
 
-        if (target == _words[mid])
-        // Check if target word is found
-        {
-            cout << "Houston, we've got eyes on the target: " << _words[mid] << endl;
-            return true;
-        }
+        // search left half
         if (target > _words[mid])
         {
             first = mid + 1;
         }
-        else
+        // search right half
+        else if (target < _words[mid])
         {
             last = mid - 1;
+        }
+        else
+        // Check if target word is found
+        {
+            // cout << "Houston, we've got eyes on the target: " << _words[mid] << endl;
+            return true;
         }
     } // End while
     return false;
