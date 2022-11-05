@@ -1,9 +1,10 @@
-// Project #3: Word Search Part A
+// Project #3: Word Search Part B
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
 // Description: Header file for the dictionary class
 // Assumption: 
+// Work done: added quicksort function
 
 #include <iostream>
 #include <fstream>
@@ -25,7 +26,10 @@ class dictionary
     void readDict();
     friend ostream& operator<<(ostream& ostr, const vector<string> words);
     void sortWords();
+    void quicksortWords(int left, int right);
+    int partition(int left, int right);
     bool lookupWords(string target);
+    int getSize();
 
     private:
     vector<string> _words;
@@ -48,6 +52,12 @@ void dictionary::readDict()
         _words.push_back(temp);
     }
 } // End readDict
+
+int dictionary::getSize()
+// returns number of words in dictionary
+{
+    return _words.size();
+}
 
 ostream& operator<<(ostream& ostr, const vector<string> words)
 // Overloaded cout operator to print word list
@@ -75,8 +85,40 @@ void dictionary::sortWords()
             }
         }
         swap(_words[i], _words[min]);
-    } //End for
+    }
 } // End sortWords
+
+void dictionary::quicksortWords(int left, int right)
+// Sort words using quicksort
+{
+    int s; // partitioning index
+    if (left < right) // if there are atleast two elements in subarray
+    {
+        s = partition(left, right);
+        // divide list into two and keep paritioning
+        quicksortWords(left, s-1);
+        quicksortWords(s+1, right);
+    }
+} // End quicksortWords
+
+int dictionary::partition(int left, int right)
+// Function that makes last element a pivot, and swaps all strings smaller than 
+// pivot to left of pivot, and moves pivot element to its correct position
+{
+    string pivot = _words[right]; // rightmost element becomes pivot
+    int i = left - 1; // tracks position for swap with pivot
+    for (int j = left; j < right; j++)
+    {
+        // if the current string is lower in alphabet than pivot
+        if (_words[j] < pivot) 
+        {
+            i++; // increment swap position
+            swap(_words[i], _words[j]); // swap string lowest in alphabet left
+        }
+    }
+    swap(_words[i+1], _words[right]); // swap pivot into the correct location
+    return (i+1); // return new pivot index
+} // End of partition
 
 bool dictionary::lookupWords(string word)
 // Lookup words using binary search

@@ -140,15 +140,13 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (word.length() >= 4){
-                    if (dict.lookupWords(word))
-                    {
-                        found.push_back(word);
-                    }
-                    else if (dict.lookupWords(revWord))
-                    {
-                        found.push_back(revWord);
-                    }
+                if (dict.lookupWords(word))
+                {
+                    found.push_back(word);
+                }
+                else if (dict.lookupWords(revWord))
+                {
+                    found.push_back(revWord);
                 }
 
                 // decrement index
@@ -181,7 +179,8 @@ void search()
     // Create words object and read in dictionary
     dictionary words;                                
     words.readDict();
-    words.sortWords();
+    int dictLen = words.getSize();
+    words.quicksortWords(0, dictLen-1);
 
     // (3)
     vector<string> matches = findMatches(words, grid);
