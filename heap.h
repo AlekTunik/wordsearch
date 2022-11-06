@@ -2,9 +2,9 @@
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
-// Description: Header file for the dictionary class
+// Description: Header file for the heap class
 // Assumption: 
-// Work done: added quicksort function
+// Work done: all functs besides the max heapify
 
 #include <iostream>
 #include <fstream>
@@ -32,9 +32,9 @@ class heap
     T getItem(T n);
 
     void initializeMaxHeap(vector<T> &x);
-    void maxHeapify(int root, int bottom);
-    void buildMaxHeap();
-    void heapsort();
+    void maxHeapify(vector<T> &A, int parentIndex);
+    void buildMaxHeap(vector<T> &A);
+    void heapsort(vector<T> &output);
 
     private:
     // private data member
@@ -100,19 +100,68 @@ void heap<T>::initializeMaxHeap(vector<T> &list)
     }
 
     buildMaxHeap();
-}
+} // end initializeMaxHeap
 
 template <typename T>
-void heap<T>::maxHeapify(int root, int bottom)
+void heap<T>::maxHeapify(vector<T> &A, int parentIndex)
 // Function to recursively swap elements to reorder heap so the root is on top
 {
     // decrease bottom every time function is called
     bottom--;
 
     // initialize vars
-    int leftChild  = left(root);
-    int rightChild = right(root);
-    int larger;
+    int l  = left(parentIndex);
+    int r = right(parentIndex);
+    int largest;
 
-    // condition 
+    // find largest value
+    if ((l < A.size()) && (A[l] > A[parentIndex]))
+    {
+        largest = 1;
+    }
+    else largest = i;
+
+    if ((r <= A.size()) && (A[r] > A[largest]))
+    {
+        largest = r;
+    }
+
+    // float down
+    if largest != parentIndex
+    {
+        swap(A[parentIndex], A(largest))
+        maxHeapify(A, largest)
+    }
+} // end maxHeapify
+
+
+
+template <typename T>
+void heap<T>::buildMaxHeap(vector<T> &A)
+// Function to 
+{
+    int heapSize = A.size();
+    for (int i = (heapSize + 1) / 2; i >= 0; i--)
+    {
+        maxHeapify(A, i)
+    }
 }
+
+
+template <typename T>
+void heap<T>::heapsort(vector<T> & A)
+// Function to 
+{
+    int heapSize = A.size();
+    buildMaxHeap();
+
+    for (int i = heapSize - 1; i > 0; i--)
+    {
+        swap(A[0], A[i]);
+        heapSize--;
+
+        maxHeapify(A, 1)
+    }
+
+    A = heap;
+} // end heapSort
