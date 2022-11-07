@@ -14,6 +14,7 @@
 #include "grid.h"
 #include "d_matrix.h"
 #include "d_except.h"
+#include "heap.h"
 
 using namespace std;
 
@@ -192,7 +193,5 @@ int main()
 {
     // dictionary words;                                
     // words.readDict();
-    search();
-    cout << ("do\r" == "");
+    // search();
 } // end main
-

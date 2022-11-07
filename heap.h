@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector> 
+#include <cmath>
 #include "d_except.h"
 #include "d_matrix.h"
 
@@ -19,149 +20,141 @@ using namespace std;
 template <typename T>
 class heap 
 {
-// needs descript
     public:
-    //constructors / destructor
-    heap(const vector<T>& data);
-    ~heap();
-
     //public member functions
-    int parent(int i);
-    int left(int i);
-    int right(int i);
-    T getItem(T n);
-
-    void initializeMaxHeap(vector<T> &x);
-    void maxHeapify(vector<T> &A, int parentIndex);
-    void buildMaxHeap(vector<T> &A);
-    void heapsort(vector<T> &output);
+    vector<T> heapsort(vector<T>& A);
 
     private:
     // private data member
     vector<T> _heap;
+    // private data functions
+    int parent(int i);
+    int left(int i);
+    int right(int i);
+    T getItem(int n);
+    void buildMaxHeap(const vector<T> &A);
+    void initializeMaxHeap(const vector<T> &A);
+    void maxHeapify(int parentIndex, int size);
 
     
 }; // End template heap class
 
 template <typename T>
-heap<T>::heap(const vector<T>& data)
-// Constructor 
-{
-    for(int i = 0; i < data.size(); i++)
-    {
-        _heap.push_back(data[i]);
-    }
-}
-
-template <typename T>
-heap<T>::~heap(){}
-// Destructor
-
-template <typename T>
 int heap<T>::parent(int i)
-// Get parent
+// Get index of parent
 {
-    return (i + 1 ) / 2 - 1;
-}
+    if(i != 1)
+    // Make sure not root
+    {
+        return floor(i/2);
+    }
+    else
+    // if root, return 0
+    {
+        cout << "Root node has no parent" << endl;
+        return 0;
+    }
+} // End parent
 
 
 template <typename T>
 int heap<T>::left(int i)
-// Get left
+// Get index of left child
 {
-    return 2 * (i + 1) - 1;
+    return 2*i;
 }
 
 
 template <typename T>
 int heap<T>::right(int i)
-// Get right
+// Get index of right child
 {
-    return 2 * (i + 1);
+    return (2*i + 1);
 }
 
 
 template <typename T>
-T heap<T>::getItem(T n)
+T heap<T>::getItem(int n)
 // Returns the nth item in the heap
 {
-    // Range check??
-
-    return heap[n]
+    return _heap[n-1];
 }
 
-template <typename T>
-void heap<T>::initializeMaxHeap(vector<T> &list)
-// Function to initialize a heap
-{
-    for (int i = 0; i < list.size(); i++)
-    {
-        heap.push_back{list[i]}
-    }
-
-    buildMaxHeap();
-} // end initializeMaxHeap
 
 template <typename T>
-void heap<T>::maxHeapify(vector<T> &A, int parentIndex)
+void heap<T>::maxHeapify(int parentIndex, int size) 
 // Function to recursively swap elements to reorder heap so the root is on top
 {
-    // decrease bottom every time function is called
-    bottom--;
-
     // initialize vars
     int l  = left(parentIndex);
     int r = right(parentIndex);
-    int largest;
+    int largest = parentIndex;
 
     // find largest value
-    if ((l < A.size()) && (A[l] > A[parentIndex]))
+    if ((l <= size) && (getItem(l) > getItem(largest)))
+    // if the element in the left child is larger than the parent
     {
-        largest = 1;
+        // make left child largest
+        largest = l;
     }
-    else largest = i;
-
-    if ((r <= A.size()) && (A[r] > A[largest]))
+    if ((r <= size) && (getItem(r) > getItem(largest)))
+    // if the element in the right child is larger than the parent
     {
+        // make right child the largest
         largest = r;
     }
 
     // float down
-    if largest != parentIndex
+    if (largest != parentIndex)
+    // if heap property is not met
     {
-        swap(A[parentIndex], A(largest))
-        maxHeapify(A, largest)
+        swap(_heap[parentIndex-1], _heap[largest-1]);
+        maxHeapify(largest, size);
     }
-} // end maxHeapify
+} // End maxHeapify
 
+template <typename T>
+void heap<T>::initializeMaxHeap(const vector<T>& A)
+// Function to initialize a heap
+{
+    for (int i = 0; i < A.size(); i++)
+    {
+        _heap.push_back(A[i]);
+    }
+} // End initializeMaxHeap
 
 
 template <typename T>
-void heap<T>::buildMaxHeap(vector<T> &A)
-// Function to 
+void heap<T>::buildMaxHeap(const vector<T>& A)
+// Function to build MAXHEAP
 {
-    int heapSize = A.size();
-    for (int i = (heapSize + 1) / 2; i >= 0; i--)
+    // Turn array into heap
+    initializeMaxHeap(A);
+
+    // put heap in order
+    for (int i = floor(_heap.size()/2); i > 0; i--)
     {
-        maxHeapify(A, i)
+        maxHeapify(i, _heap.size());
     }
-}
+
+    cout << _heap << endl << endl;
+
+} // End buildMaxHeap
 
 
 template <typename T>
-void heap<T>::heapsort(vector<T> & A)
-// Function to 
+vector<T> heap<T>::heapsort(vector<T>& A)
+// Function to heap sort vector<T>
 {
-    int heapSize = A.size();
-    buildMaxHeap();
+    buildMaxHeap(A);
 
-    for (int i = heapSize - 1; i > 0; i--)
+    int bottom = 0;
+
+    for (int i = _heap.size(); i > 1; i--)
     {
-        swap(A[0], A[i]);
-        heapSize--;
-
-        maxHeapify(A, 1)
+        swap(_heap[0], _heap[i-1]);
+        maxHeapify(1, i-1);
     }
 
-    A = heap;
-} // end heapSort
+    return _heap;
+} // End heapSort
