@@ -3,8 +3,7 @@
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
 // Description: Header file for the heap class
-// Assumption: 
-// Work done: all functs besides the max heapify
+// Assumption:
 
 #include <iostream>
 #include <fstream>
