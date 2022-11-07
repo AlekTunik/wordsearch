@@ -43,17 +43,7 @@ template <typename T>
 int heap<T>::parent(int i)
 // Get index of parent
 {
-    if(i != 1)
-    // Make sure not root
-    {
-        return floor(i/2);
-    }
-    else
-    // if root, return 0
-    {
-        cout << "Root node has no parent" << endl;
-        return 0;
-    }
+    return floor(i/2);
 } // End parent
 
 
@@ -146,10 +136,10 @@ template <typename T>
 vector<T> heap<T>::heapsort(vector<T>& A)
 // Function to heap sort vector<T>
 {
+    // step 1: create max heap
     buildMaxHeap(A);
 
-    int bottom = 0;
-
+    // rearrange heap to be in increasing order
     for (int i = _heap.size(); i > 1; i--)
     {
         swap(_heap[0], _heap[i-1]);
