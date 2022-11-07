@@ -27,6 +27,7 @@ class dictionary
     friend ostream& operator<<(ostream& ostr, const vector<string> words);
     void sortWords();
     void quicksortWords(int left, int right);
+    void heapSort();
     int partition(int left, int right);
     bool lookupWords(string target);
     int getSize();
@@ -100,6 +101,15 @@ void dictionary::quicksortWords(int left, int right)
         quicksortWords(s+1, right);
     }
 } // End quicksortWords
+
+void dictionary::heapSort()
+// Declares and populates heap with dictionary
+// Sort dictionary using heapsort function
+{
+    heap<string> heap;
+    heap.initializeMaxHeap(words);
+    heap.heapsort(words);
+}
 
 int dictionary::partition(int left, int right)
 // Function that makes last element a pivot, and swaps all strings smaller than 
