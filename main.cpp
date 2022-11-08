@@ -2,7 +2,10 @@
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
-// Description: Main file for word search project
+// Description: Main file for word search project. The user can choose between
+// selection sort, quicksort, and heap sort algorithms to sort the dictionary.
+// Quicksort and heap sort are the fastest algorithms with O(nlogn) efficiency.
+// Selection sort is the slowest algorithm with O(n^2) efficiency.
 // Assumption: 
 
 #include <iostream>
