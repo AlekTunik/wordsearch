@@ -160,7 +160,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
     return found;
 } // end findMatches
 
-void search()
+void search(int num)
 // (1) Read the name of the grid file from the keyboard
 // (2) Read the data from input files for grid and dictionary
 // (3) Print out candidate words that can be found in the dictionary.
@@ -180,7 +180,25 @@ void search()
     dictionary words;                                
     words.readDict();
     int dictLen = words.getSize();
-    words.heapSortWords();
+    //words.heapSortWords();
+
+    switch(num)
+    {
+        case 1 :
+            words.selectionSortWords();
+            break;
+        case 2 :
+            int Left, Right;
+            cout << "Enter value to be leftmost position: ";
+            cin >> Left;
+            cout << "Enter value to be rightmost position: ";
+            cin >> Right;
+            words.quicksortWords(Left, Right);
+            break;
+        case 3 :
+            words.heapSortWords();
+            break;
+    }
 
     // (3)
     vector<string> matches = findMatches(words, grid);
@@ -190,7 +208,14 @@ void search()
 
 int main()
 {
+    int sortNum;
     dictionary words;                                
     words.readDict();
-    search();
+    cout << "Sorting Algorithms: " << endl;
+    cout << "       1. Selection Sort" << endl;
+    cout << "       2. Quick Sort" << endl;
+    cout << "       3. Heap Sort" << endl;
+    cout << "Please enter the integer of your desired sorting method: ";
+    cin >> sortNum;
+    search(sortNum);
 } // end main
