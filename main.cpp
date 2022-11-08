@@ -1,4 +1,4 @@
-// Project #3: Word Search Part A
+// Project #3: Word Search Part B
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
@@ -6,7 +6,6 @@
 // selection sort, quicksort, and heap sort algorithms to sort the dictionary.
 // Quicksort and heap sort are the fastest algorithms with O(nlogn) efficiency.
 // Selection sort is the slowest algorithm with O(n^2) efficiency.
-// Assumption: 
 
 #include <iostream>
 #include <fstream>
@@ -41,7 +40,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
     string word = "";
     string revWord;
     matrix<char> grid = myGrid.getGrid();
-    vector <string> found;
+    dictionary found;
     bool isFound = false;
 
     //scan grid to find all possible words
@@ -64,15 +63,13 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (word.length() >= 4){
-                    if (dict.lookupWords(word))
-                    {
-                        found.push_back(word);
-                    }
-                    else if (dict.lookupWords(revWord))
-                    {
-                        found.push_back(revWord);
-                    }
+                if (dict.lookupWords(word + "\r"))
+                {
+                    found.addWord(word);
+                }
+                else if (dict.lookupWords(revWord + "\r"))
+                {
+                    found.addWord(revWord);
                 }
 
                 rowI++; // increment index
@@ -90,15 +87,13 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (word.length() >= 4){
-                    if (dict.lookupWords(word))
-                    {
-                        found.push_back(word);
-                    }
-                    else if (dict.lookupWords(revWord))
-                    {
-                        found.push_back(revWord);
-                    }
+                if (dict.lookupWords(word + "\r"))
+                {
+                    found.addWord(word);
+                }
+                else if (dict.lookupWords(revWord + "\r"))
+                {
+                    found.addWord(revWord);
                 }
 
                 colI++; // increment column
@@ -116,15 +111,13 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (word.length() >= 4){
-                    if (dict.lookupWords(word))
-                    {
-                        found.push_back(word);
-                    }
-                    else if (dict.lookupWords(revWord))
-                    {
-                        found.push_back(revWord);
-                    }
+                if (dict.lookupWords(word + "\r"))
+                {
+                    found.addWord(word);
+                }
+                else if (dict.lookupWords(revWord + "\r"))
+                {
+                    found.addWord(revWord);
                 }
 
                 // increment index
@@ -144,13 +137,13 @@ vector<string> findMatches(dictionary dict, grid myGrid)
                 string revWord = reverseWord(dict, word);
 
                 // check if word is in dictionary
-                if (dict.lookupWords(word))
+                if (dict.lookupWords(word + "\r"))
                 {
-                    found.push_back(word);
+                    found.addWord(word);
                 }
-                else if (dict.lookupWords(revWord))
+                else if (dict.lookupWords(revWord + "\r"))
                 {
-                    found.push_back(revWord);
+                    found.addWord(revWord);
                 }
 
                 // decrement index
@@ -161,7 +154,7 @@ vector<string> findMatches(dictionary dict, grid myGrid)
         }
     }
     // return vector of found words
-    return found;
+    return found.getWords();
 } // end findMatches
 
 void search(int num)
@@ -184,7 +177,6 @@ void search(int num)
     dictionary words;                                
     words.readDict();
     int dictLen = words.getSize();
-    //words.heapSortWords();
 
     switch(num)
     {

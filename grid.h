@@ -1,9 +1,8 @@
-// Project #3: Word Search Part A
+// Project #3: Word Search Part B
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
 // Description: Header file for the grid class
-// Assumption: 
 
 #include <iostream>
 #include <stdlib.h>

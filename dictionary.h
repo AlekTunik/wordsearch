@@ -2,9 +2,8 @@
 // 
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
-// Description: Header file for the dictionary class
-// Assumption: 
-// Work done: added quicksort function
+// Description: Header file for the dictionary class that has three different
+// sort algorithms: quick sort, heap sort, and selection sort.
 
 #include <iostream>
 #include <fstream>
@@ -24,6 +23,8 @@ class dictionary
 // Look up word in the dictionary to see if it exists
 {
     public:
+    vector<string> getWords();
+    void addWord(string word);
     void readDict();
     friend ostream& operator<<(ostream& ostr, const vector<string> words);
     void selectionSortWords();
@@ -37,6 +38,28 @@ class dictionary
     vector<string> _words;
 
 }; // End dictionary class
+
+void dictionary::addWord(string word)
+// Function to add word to dictionary object
+{
+    if(_words.size() == 0)
+    // add the first element if the list is empty
+    {
+        _words.push_back(word);
+    }
+    else if (!lookupWords(word))
+    // if there is atleast one word in the list and the target is not a match
+    {
+        _words.push_back(word); // add to list
+        heapSortWords(); // sort the array 
+    }
+}
+
+vector<string> dictionary::getWords()
+// returns words in dictionary
+{
+    return _words;
+}
 
 void dictionary::readDict()
 // Read words from dictionary file
@@ -130,14 +153,13 @@ int dictionary::partition(int left, int right)
     return (i+1); // return new pivot index
 } // End of partition
 
-bool dictionary::lookupWords(string word)
+bool dictionary::lookupWords(string target)
 // Lookup words using binary search
-// If found, return true and print word
-// Return false otherwise
+// If found, return true. Otherwise, return false.
 {
     int first = 0;
-    int last = _words.size();
-    string target = word + "\r";
+    int last = _words.size()-1;
+    // string target = word + "\r";
 
     while (first <= last)
     {

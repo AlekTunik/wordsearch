@@ -3,7 +3,6 @@
 // Group Members: Lisa Byrne, Kaite O'Flaherty, Alek Tunik
 //
 // Description: Header file for the heap class
-// Assumption:
 
 #include <iostream>
 #include <fstream>
