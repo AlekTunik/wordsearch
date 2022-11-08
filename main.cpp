@@ -14,7 +14,7 @@
 #include "grid.h"
 #include "d_matrix.h"
 #include "d_except.h"
-#include "heap.h"
+
 
 using namespace std;
 
