@@ -126,8 +126,6 @@ void heap<T>::buildMaxHeap(const vector<T>& A)
         maxHeapify(i, _heap.size());
     }
 
-    cout << _heap << endl << endl;
-
 } // End buildMaxHeap
 
 
