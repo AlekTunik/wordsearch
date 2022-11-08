@@ -13,6 +13,7 @@
 #include <vector> 
 #include "d_except.h"
 #include "d_matrix.h"
+#include "heap.h"
 
 using namespace std;
 
@@ -25,9 +26,9 @@ class dictionary
     public:
     void readDict();
     friend ostream& operator<<(ostream& ostr, const vector<string> words);
-    void sortWords();
+    void selectionSortWords();
     void quicksortWords(int left, int right);
-    void heapSort();
+    void heapSortWords();
     int partition(int left, int right);
     bool lookupWords(string target);
     int getSize();
@@ -72,7 +73,7 @@ ostream& operator<<(ostream& ostr, const vector<string> words)
     return ostr;
 } // End overloaded cout operator
 
-void dictionary::sortWords()
+void dictionary::selectionSortWords()
 // Sort words using selection sort
 {
     for (int i = 0; i < _words.size()-1; i++)
@@ -102,13 +103,12 @@ void dictionary::quicksortWords(int left, int right)
     }
 } // End quicksortWords
 
-void dictionary::heapSort()
+void dictionary::heapSortWords()
 // Declares and populates heap with dictionary
 // Sort dictionary using heapsort function
 {
-    heap<string> heap;
-    heap.initializeMaxHeap(words);
-    heap.heapsort(words);
+    heap<string> h;
+    _words = h.heapsort(_words);
 }
 
 int dictionary::partition(int left, int right)
