@@ -185,18 +185,20 @@ void search(int num)
 
     switch(num)
     {
-        case 1 :
+        case 1:
             words.selectionSortWords();
             break;
-        case 2 :
-            int Left, Right;
-            cout << "Enter value to be leftmost position: ";
-            cin >> Left;
-            cout << "Enter value to be rightmost position: ";
-            cin >> Right;
-            words.quicksortWords(Left, Right);
+        case 2:
+            {
+                int Left = 0;
+                int Right = words.getSize() - 1;
+                words.quicksortWords(Left, Right);
+            }
             break;
-        case 3 :
+        case 3:
+            words.heapSortWords();
+            break;
+        default:
             words.heapSortWords();
             break;
     }
