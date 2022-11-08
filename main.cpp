@@ -14,7 +14,6 @@
 #include "grid.h"
 #include "d_matrix.h"
 #include "d_except.h"
-#include "heap.h"
 
 using namespace std;
 
@@ -181,7 +180,7 @@ void search()
     dictionary words;                                
     words.readDict();
     int dictLen = words.getSize();
-    words.quicksortWords(0, dictLen-1);
+    words.heapSortWords();
 
     // (3)
     vector<string> matches = findMatches(words, grid);
@@ -191,7 +190,7 @@ void search()
 
 int main()
 {
-    // dictionary words;                                
-    // words.readDict();
-    // search();
+    dictionary words;                                
+    words.readDict();
+    search();
 } // end main
